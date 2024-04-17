@@ -1,8 +1,9 @@
 
-import { ActionsTable } from "./components/Table";
-import SearchBar from "./components/SearchBar";
-import { PaginationTable } from "./components/Pagination";
+import { ActionsTable } from "./components/homeComponents/Table";
+import SearchBar from "./components/homeComponents/SearchBar";
+import { PaginationTable } from "./components/homeComponents/Pagination";
 import api from '../Api'
+import Display from "./components/homeComponents/Display";
 
 export default async function Home() {
 
@@ -10,9 +11,7 @@ export default async function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-24">
-      <SearchBar />
-      <ActionsTable data={data} />
-      <PaginationTable />
+      <Display data={data} />
 
     </div>
   );
