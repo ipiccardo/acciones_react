@@ -2,7 +2,6 @@ import React from 'react';
 import {
     Pagination,
     PaginationContent,
-    PaginationEllipsis,
     PaginationItem,
     PaginationLink,
     PaginationNext,
@@ -31,17 +30,25 @@ export function PaginationTable({ currentPage, totalPages, setCurrentPage, input
         );
 
         pageNumbers.forEach((pageNumber) => {
-            items.push(
-                <PaginationItem key={pageNumber}>
-                    <PaginationLink
-                        href="#"
-                        isActive={pageNumber === currentPage}
-                        onClick={() => handlePageChange(pageNumber)}
-                    >
-                        {pageNumber}
-                    </PaginationLink>
-                </PaginationItem>
-            );
+            pageNumber !== '...' ?
+                items.push(
+                    <PaginationItem key={pageNumber}>
+                        <PaginationLink
+                            href="#"
+                            isActive={pageNumber === currentPage}
+
+                            onClick={() => handlePageChange(pageNumber)}
+                        >
+                            {pageNumber}
+                        </PaginationLink>
+                    </PaginationItem>
+                ) : items.push(
+                    <PaginationItem key={pageNumber}>
+                        <div className='pr-2'>
+                            {pageNumber}
+                        </div>
+                    </PaginationItem>
+                )
         });
         items.push(
             <PaginationItem key="input">
@@ -66,7 +73,6 @@ export function PaginationTable({ currentPage, totalPages, setCurrentPage, input
                 />
             </PaginationItem>
         );
-
         return items;
     };
 

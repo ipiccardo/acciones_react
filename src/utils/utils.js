@@ -13,10 +13,6 @@ export const generatePageNumbers = (currentPage, totalPages) => {
     pages.push(i);
   }
 
-  if (startPage > 1) {
-    pages.unshift("...");
-  }
-
   if (endPage < totalPages) {
     pages.push("...");
   }

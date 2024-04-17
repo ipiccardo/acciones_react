@@ -15,7 +15,7 @@ export default function SearchBar() {
 
     return (
         <form onSubmit={handleSubmit} className="inline-flex gap-2 mb-4">
-            <input className="px-2 border-solid border-2 border-grey rounded" name="query" />
+            <input defaultValue={searchParams.get('q') || ''} className="px-2 border-solid border-2 border-grey rounded" name="query" />
             <button type="submit" className="p-2 bg-white/20">Search</button>
         </form>
     );

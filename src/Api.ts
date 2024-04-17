@@ -36,12 +36,14 @@ const api = {
 
     return share;
   },
-  search: async (query: string): Promise<Share[]> => {
+  search: async (query: string | any): Promise<Share[]> => {
     const results = await api
       .list()
-      .then((shares) =>
-        shares.filter((res) =>
-          res.name.toLowerCase().includes(query?.toLowerCase())
+      .then((shares: any) =>
+        shares.data.filter(
+          (res: any) =>
+            res.name.toLowerCase().includes(query?.toLowerCase()) ||
+            res.symbol.toLowerCase().includes(query?.toLowerCase())
         )
       );
 

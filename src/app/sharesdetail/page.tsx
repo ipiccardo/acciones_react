@@ -23,7 +23,7 @@ const page = () => {
             <div>
                 {/* ACA VA EL GRÁFICO */}
             </div>
-            <Link href='/'>Back to home</Link>
+            <Link href='/?q='>Back to home</Link>
         </div>
     )
 }
