@@ -14,16 +14,15 @@ export function SelectInterval() {
     return (
         <Select>
             <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select a fruit" />
+                <SelectValue placeholder="Select a interval" />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
-                    <SelectLabel>Fruits</SelectLabel>
-                    <SelectItem value="apple">Apple</SelectItem>
-                    <SelectItem value="banana">Banana</SelectItem>
-                    <SelectItem value="blueberry">Blueberry</SelectItem>
-                    <SelectItem value="grapes">Grapes</SelectItem>
-                    <SelectItem value="pineapple">Pineapple</SelectItem>
+                    <SelectLabel>Intervals</SelectLabel>
+                    <SelectItem value="apple">1 min</SelectItem>
+                    <SelectItem value="banana">5 min</SelectItem>
+                    <SelectItem value="blueberry">15 min</SelectItem>
+
                 </SelectGroup>
             </SelectContent>
         </Select>

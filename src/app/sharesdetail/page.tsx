@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from '../components/Header'
 import Checkbox from '../components/checkbox'
-import Input from '../components/Input'
 import { SelectInterval } from '../components/SelectInterval'
+import Link from 'next/link'
 
 const page = () => {
     return (
@@ -20,6 +20,10 @@ const page = () => {
             <div className='flex justify-end w-full max-w-2xl pt-10'>
                 <button className='bg-gray-400 w-24 p-2 border-solid border-2 border-black rounded'>Graficar</button>
             </div>
+            <div>
+                {/* ACA VA EL GRÁFICO */}
+            </div>
+            <Link href='/'>Back to home</Link>
         </div>
     )
 }

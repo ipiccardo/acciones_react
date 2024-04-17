@@ -1,3 +1,5 @@
+'use client'
+import React, { useState } from 'react';
 import {
     Table,
     TableBody,
@@ -7,7 +9,8 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
+import { Share } from '@/Api';
 
 const invoices = [
     {
@@ -54,10 +57,25 @@ const invoices = [
     },
 ]
 
-export function ActionsTable() {
+export function ActionsTable({ data }: any) {
+
+    console.log(data.data, 'data')
+
+    const itemsPerPage = 50;
+    const [currentPage, setCurrentPage] = useState<number>(1);
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, data.data.length);
+
+    const currentPageData = data.data.slice(startIndex, endIndex);
+
+    const handlePageChange = (pageNumber: number) => {
+        setCurrentPage(pageNumber);
+    };
+
     return (
         <Table>
-            {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
+            <TableCaption>A list of shares.</TableCaption>
             <TableHeader>
                 <TableRow>
                     <TableHead className="w-[100px]">Simbolo</TableHead>
@@ -67,12 +85,12 @@ export function ActionsTable() {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {invoices.map((invoice) => (
-                    <TableRow key={invoice.invoice}>
-                        <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                        <TableCell>{invoice.paymentStatus}</TableCell>
-                        <TableCell>{invoice.paymentMethod}</TableCell>
-                        <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+                {currentPageData.map((share: Share) => (
+                    <TableRow key={share.symbol}>
+                        <TableCell className="font-medium">{share.symbol}</TableCell>
+                        <TableCell>{share.name}</TableCell>
+                        <TableCell>{share.currency}</TableCell>
+                        <TableCell className="text-right">{share.type}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>
