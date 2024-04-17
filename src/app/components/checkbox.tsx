@@ -4,7 +4,7 @@
 const Checkbox = ({ children }: any) => {
 
     return (
-        <div className="flex gap-2 pt-10">
+        <div className="flex gap-2 ">
             <input
                 type="checkbox"
                 checked={false}
