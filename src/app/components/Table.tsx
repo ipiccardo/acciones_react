@@ -11,7 +11,13 @@ import {
 } from "@/components/ui/table";
 import { Share } from '@/Api';
 import Link from 'next/link';
+import { redirect } from 'next/navigation'
+
 export function ActionsTable({ currentPageData }: any) {
+
+    if (!currentPageData.length) {
+        redirect('/?q=')
+    }
 
     return (
         <Table>
