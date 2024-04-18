@@ -3,11 +3,12 @@ import React from 'react'
 import SearchBar from './SearchBar'
 import { ActionsTable } from './Table'
 import { PaginationTable } from './Pagination'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Suspense } from 'react'
 
-const Display = ({ data }: any) => {
+const HomeLayout = ({ data }: any) => {
 
-    const itemsPerPage = 50;
+    const itemsPerPage = data.length > 50 ? 50 : data.length
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [inputPage, setInputPage] = useState("");
 
@@ -18,13 +19,20 @@ const Display = ({ data }: any) => {
 
     const currentPageData = data.slice(startIndex, endIndex);
 
+    useEffect(() => {
+        setCurrentPage(1)
+    }, [data])
+
+
+    console.log(data.length)
+
     return (
         <>
             <SearchBar />
-            <ActionsTable currentPageData={data} />
-            {/* <PaginationTable setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} setInputPage={setInputPage} inputPage={inputPage} /> */}
+            <ActionsTable currentPageData={currentPageData} />
+            <PaginationTable setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} setInputPage={setInputPage} inputPage={inputPage} />
         </>
     )
 }
 
-export default Display
+export default HomeLayout

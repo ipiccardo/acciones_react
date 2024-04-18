@@ -24,7 +24,13 @@ export function PaginationTable({ currentPage, totalPages, setCurrentPage, input
             <PaginationItem key="prev">
                 <PaginationPrevious
                     href="#"
-                    onClick={() => handlePageChange(currentPage - 1)}
+                    onClick={() => {
+                        if (currentPage === 1) {
+                            return
+                        } else {
+                            handlePageChange(currentPage - 1)
+                        }
+                    }}
                 />
             </PaginationItem>
         );
@@ -69,7 +75,14 @@ export function PaginationTable({ currentPage, totalPages, setCurrentPage, input
             <PaginationItem key="next">
                 <PaginationNext
                     href="#"
-                    onClick={() => handlePageChange(currentPage + 1)}
+                    onClick={() => {
+                        if (currentPage === totalPages) {
+                            return
+                        } else {
+                            handlePageChange(currentPage + 1)
+                        }
+                    }
+                    }
                 />
             </PaginationItem>
         );

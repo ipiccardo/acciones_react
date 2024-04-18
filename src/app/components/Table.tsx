@@ -1,5 +1,4 @@
 'use client'
-import React, { useState } from 'react';
 import {
     Table,
     TableBody,
@@ -12,7 +11,6 @@ import {
 } from "@/components/ui/table";
 import { Share } from '@/Api';
 import Link from 'next/link';
-
 export function ActionsTable({ currentPageData }: any) {
 
     return (

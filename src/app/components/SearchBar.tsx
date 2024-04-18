@@ -18,15 +18,15 @@ export default function SearchBar() {
 
     const handleInputChange = (event: any) => {
         setSearchQuery(event.target.value)
-
     }
+
 
     return (
         <>
-            <form className="inline-flex gap-2 mb-4">
+            <div className="inline-flex gap-2 mb-4">
                 <input className="px-2 border-solid border-2 border-grey rounded" onChange={handleInputChange} type="text" value={searchQuery} />
                 <label>Search</label>
-            </form>
+            </div>
         </>
     );
 }
