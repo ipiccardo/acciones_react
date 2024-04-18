@@ -1,16 +1,18 @@
 'use client'
 import React from 'react'
 import SearchBar from './SearchBar'
-import { ActionsTable } from './Table'
-import { PaginationTable } from './Pagination'
+import { ActionsTable } from './ui/Table'
+import { PaginationTable } from './ui/Pagination'
 import { useState, useEffect } from 'react'
 import { generatePaginationItems, handleGoToPage } from '@/utils/utils'
+import { SkeletonCard } from './loading/Loading'
 
 const HomeLayout = ({ data }: any) => {
 
     const itemsPerPage = data.length > 50 ? 50 : data.length
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [inputPage, setInputPage] = useState("");
+    const [loading, setLoading] = useState(true)
 
     const totalPages = Math.ceil(data.length / itemsPerPage)
 
@@ -27,12 +29,28 @@ const HomeLayout = ({ data }: any) => {
         setCurrentPage(pageNumber);
     };
 
+
+    useEffect(() => {
+        currentPageData ? setLoading(false) : setLoading(true)
+    }, [false])
+
+
     const paginationItems = generatePaginationItems(currentPage, totalPages, handlePageChange, inputPage, setInputPage, handleGoToPage, setCurrentPage);
     return (
         <>
             <SearchBar />
-            <ActionsTable currentPageData={currentPageData} />
-            <PaginationTable paginationItems={paginationItems} />
+            {
+                loading ? (
+                    <SkeletonCard />
+                ) : (
+                    <ActionsTable currentPageData={currentPageData} />
+                )
+            }
+            {
+                data.length > 0 && (
+                    <PaginationTable paginationItems={paginationItems} />
+                )
+            }
         </>
     )
 }

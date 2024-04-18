@@ -1,6 +1,6 @@
 "use client"
 
-// const Checkbox: React.FC<CheckboxProps> = ({ checked, onChange }) => {
+
 const Checkbox = ({ children }: any) => {
 
     return (

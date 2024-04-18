@@ -6,7 +6,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { InputWithButton } from "@/app/components/Input";
+import { InputWithButton } from "@/app/components/ui/Input";
 
 export const generatePageNumbers = (currentPage, totalPages) => {
   const pagesToShow = 5;
