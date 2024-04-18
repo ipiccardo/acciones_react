@@ -4,7 +4,7 @@ import SearchBar from './SearchBar'
 import { ActionsTable } from './Table'
 import { PaginationTable } from './Pagination'
 import { useState, useEffect } from 'react'
-import { Suspense } from 'react'
+import { generatePaginationItems, handleGoToPage } from '@/utils/utils'
 
 const HomeLayout = ({ data }: any) => {
 
@@ -23,14 +23,16 @@ const HomeLayout = ({ data }: any) => {
         setCurrentPage(1)
     }, [data])
 
+    const handlePageChange = (pageNumber: number | string | any) => {
+        setCurrentPage(pageNumber);
+    };
 
-    console.log(data.length)
-
+    const paginationItems = generatePaginationItems(currentPage, totalPages, handlePageChange, inputPage, setInputPage, handleGoToPage, setCurrentPage);
     return (
         <>
             <SearchBar />
             <ActionsTable currentPageData={currentPageData} />
-            <PaginationTable setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} setInputPage={setInputPage} inputPage={inputPage} />
+            <PaginationTable paginationItems={paginationItems} />
         </>
     )
 }
