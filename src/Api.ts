@@ -23,7 +23,6 @@ const api = {
       .then((res) => res.json())
       .then((newData) => newData);
     shares.push(...data.data);
-
     return data;
   },
   fetch: async (symbol: Share["symbol"]): Promise<Share> => {
@@ -31,11 +30,11 @@ const api = {
 
     const share = shares.find((share) => share.symbol === symbol);
 
-    if (!share) {
+    if (share) {
+      return share;
+    } else {
       throw new Error(`Accion with symbol ${symbol} not found`);
     }
-
-    return share;
   },
   search: async (query: string | any): Promise<Share[]> => {
     const results = await api.list().then((shares: any) =>
