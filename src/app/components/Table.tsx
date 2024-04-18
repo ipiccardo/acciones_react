@@ -15,7 +15,6 @@ import Link from 'next/link';
 
 export function ActionsTable({ currentPageData }: any) {
 
-
     return (
         <Table>
             <TableCaption>A list of shares.</TableCaption>
@@ -28,7 +27,7 @@ export function ActionsTable({ currentPageData }: any) {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {currentPageData.map((share: Share) => (
+                {currentPageData?.map((share: Share) => (
                     <TableRow key={share.symbol}>
                         <TableCell className="font-medium"><Link href='/sharesdetail' className='text-blue-600 underline decoration-1'>{share.symbol}</Link></TableCell>
                         <TableCell>{share.name}</TableCell>

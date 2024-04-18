@@ -7,8 +7,8 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
-import { generatePageNumbers } from '../../../utils/utils'
-import { InputWithButton } from '../generalComponents/Input';
+import { generatePageNumbers } from '../../utils/utils'
+import { InputWithButton } from './Input';
 
 export function PaginationTable({ currentPage, totalPages, setCurrentPage, inputPage, setInputPage }: any) {
 

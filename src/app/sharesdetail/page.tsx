@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../components/sharesDetailComponents/Header'
-import Checkbox from '../components/sharesDetailComponents/Checkbox'
-import { SelectInterval } from '../components/sharesDetailComponents/SelectInterval'
+import Header from '../components/Header'
+import Checkbox from '../components/Checkbox'
+import { SelectInterval } from '../components/SelectInterval'
 import Link from 'next/link'
 
 const page = () => {

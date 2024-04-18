@@ -11,7 +11,7 @@ const Display = ({ data }: any) => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [inputPage, setInputPage] = useState("");
 
-    const totalPages = Math.round(data.length / itemsPerPage)
+    const totalPages = Math.ceil(data.length / itemsPerPage)
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = Math.min(startIndex + itemsPerPage, data.length);
@@ -21,8 +21,8 @@ const Display = ({ data }: any) => {
     return (
         <>
             <SearchBar />
-            <ActionsTable currentPageData={currentPageData} />
-            <PaginationTable setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} setInputPage={setInputPage} inputPage={inputPage} />
+            <ActionsTable currentPageData={data} />
+            {/* <PaginationTable setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} setInputPage={setInputPage} inputPage={inputPage} /> */}
         </>
     )
 }

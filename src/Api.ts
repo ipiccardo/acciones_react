@@ -10,11 +10,11 @@ export interface Share {
 
 const shares: Share[] = [];
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+// const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const api = {
   list: async (): Promise<Share[]> => {
-    await sleep(750);
+    // await sleep(750);
 
     const data = await fetch(
       "https://api.twelvedata.com/stocks?source=docs&exchange=NYSE",
@@ -26,7 +26,7 @@ const api = {
     return data;
   },
   fetch: async (symbol: Share["symbol"]): Promise<Share> => {
-    await sleep(750);
+    // await sleep(750);
 
     const share = shares.find((share) => share.symbol === symbol);
 
