@@ -37,16 +37,16 @@ const api = {
     return share;
   },
   search: async (query: string | any): Promise<Share[]> => {
-    const results = await api
-      .list()
-      .then((shares: any) =>
-        shares.data.filter(
-          (res: any) =>
-            res.name.toLowerCase().includes(query?.toLowerCase()) ||
-            res.symbol.toLowerCase().includes(query?.toLowerCase())
-        )
-      );
-
+    const results = await api.list().then((shares: any) =>
+      shares.data.filter((res: any) => {
+        if (query?.includes("symbol")) {
+          const newQuery = query.slice(7);
+          return res.symbol.toLowerCase().includes(newQuery?.toLowerCase());
+        } else {
+          return res.name.toLowerCase().includes(query?.toLowerCase());
+        }
+      })
+    );
     return results;
   },
 };

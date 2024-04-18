@@ -15,9 +15,9 @@ import { redirect } from 'next/navigation'
 
 export function ActionsTable({ currentPageData }: any) {
 
-    if (!currentPageData.length) {
-        redirect('/?q=')
-    }
+    // if (!currentPageData.length) {
+    //     redirect('/?q=')
+    // }
 
     return (
         <Table>

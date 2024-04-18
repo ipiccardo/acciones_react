@@ -124,9 +124,9 @@ export const generatePaginationItems = (
   });
 
   items.push({
-    key: "prev",
+    key: "next",
     component: (
-      <PaginationItem key="next">
+      <PaginationItem>
         <PaginationNext
           href="#"
           onClick={() => {
