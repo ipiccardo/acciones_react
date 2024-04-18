@@ -1,13 +1,18 @@
 import React from 'react'
-import Header from '../components/ui/Header'
-import Checkbox from '../components/ui/Checkbox'
-import { SelectInterval } from '../components/ui/SelectInterval'
+import Header from '../../components/ui/Header'
+import Checkbox from '../../components/ui/Checkbox'
+import { SelectInterval } from '../../components/ui/SelectInterval'
 import Link from 'next/link'
+import api from '../../../Api'
 
-const page = () => {
+const page = async ({ params }: { params: { symbol: string } }) => {
+
+    const data = await api.fetch(params.symbol)
+
+
     return (
         <div className='max-w-6xl flex flex-col w-full content-center justify-center mx-auto my-0 pt-10'>
-            <Header />
+            <Header data={data} />
             <div className='flex gap-10 items-center py-10'>
                 <Checkbox children={'Tiempo Real'} />
                 <SelectInterval />
@@ -27,5 +32,6 @@ const page = () => {
         </div>
     )
 }
+
 
 export default page

@@ -51,9 +51,9 @@ export default function SearchBar() {
 
     return (
         <>
-            <div className="flex w-full gap-8">
-                <SearchBox label={'By Name'} onChange={handleInputChange} value={searchQuery} />
-                <SearchBox label={'By Symbol'} onChange={handleSymbolChange} value={serchBySymbol} />
+            <div className="flex flex-col w-full gap-8 py-8 md:flex-row ">
+                <SearchBox label={'By Name'} onChange={handleInputChange} value={searchQuery} placeholder={'Search by Name...'} />
+                <SearchBox label={'By Symbol'} onChange={handleSymbolChange} value={serchBySymbol} placeholder={'Search by Symbol...'} />
             </div>
         </>
     );

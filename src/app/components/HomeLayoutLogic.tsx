@@ -6,6 +6,7 @@ import { PaginationTable } from './ui/Pagination'
 import { useState, useEffect } from 'react'
 import { generatePaginationItems, handleGoToPage } from '@/utils/utils'
 import { SkeletonCard } from './loading/Loading'
+import { SkeletonInTable } from './loading/skeletonTable'
 
 const HomeLayout = ({ data }: any) => {
 
@@ -41,7 +42,7 @@ const HomeLayout = ({ data }: any) => {
             <SearchBar />
             {
                 loading ? (
-                    <SkeletonCard />
+                    <SkeletonInTable />
                 ) : (
                     <ActionsTable currentPageData={currentPageData} />
                 )

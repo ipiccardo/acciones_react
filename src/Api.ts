@@ -22,6 +22,7 @@ const api = {
     )
       .then((res) => res.json())
       .then((newData) => newData);
+    shares.push(...data.data);
 
     return data;
   },

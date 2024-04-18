@@ -8,7 +8,7 @@ import {
 export function PaginationTable({ paginationItems }: any) {
     return (
         <Pagination>
-            <PaginationContent>
+            <PaginationContent className='flex-col md:flex-row'>
                 {paginationItems.map((item: any) => (
                     <React.Fragment key={item.key}>
                         {item.component}

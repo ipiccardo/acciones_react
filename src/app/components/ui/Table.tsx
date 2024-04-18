@@ -12,9 +12,10 @@ import { Share } from '@/Api';
 import Link from 'next/link';
 
 export function ActionsTable({ currentPageData }: any) {
+
     return (
         <Table>
-            <TableCaption>A list of shares.</TableCaption>
+            <TableCaption className="py-8">A list of shares.</TableCaption>
             <TableHeader>
                 <TableRow>
                     <TableHead className="w-[100px]">Simbolo</TableHead>
@@ -26,7 +27,7 @@ export function ActionsTable({ currentPageData }: any) {
             <TableBody>
                 {currentPageData?.map((share: Share) => (
                     <TableRow key={share.symbol}>
-                        <TableCell className="font-medium"><Link href='/sharesdetail' className='text-blue-600 underline decoration-1'>{share.symbol}</Link></TableCell>
+                        <TableCell className="font-medium"><Link href={`/sharesdetail/${share.symbol}`} className='text-blue-600 underline decoration-1'>{share.symbol}</Link></TableCell>
                         <TableCell>{share.name}</TableCell>
                         <TableCell>{share.currency}</TableCell>
                         <TableCell className="text-right">{share.type}</TableCell>
@@ -35,8 +36,8 @@ export function ActionsTable({ currentPageData }: any) {
             </TableBody>
             <TableFooter>
                 <TableRow>
-                    <TableCell colSpan={3}>Total</TableCell>
-                    <TableCell className="text-right">$2,500.00</TableCell>
+                    <TableCell colSpan={3}></TableCell>
+                    <TableCell className="text-right"></TableCell>
                 </TableRow>
             </TableFooter>
         </Table>
