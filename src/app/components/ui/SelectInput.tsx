@@ -10,21 +10,22 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 
-export function SelectedInput({ price, placeholder, disabled }: { price: { values: Array<any> }, placeholder: string, disabled: boolean }) {
+export function SelectedInput({ price, placeholder, disabled, handleSelect, sinceDate, untilDate }: { price: { values: Array<any> }, placeholder: string, disabled: boolean, handleSelect: Function, sinceDate?: string, untilDate?: string }) {
+
 
     return (
         <Select disabled={disabled}>
             <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder={placeholder} />
+                <SelectValue placeholder={sinceDate !== '' && untilDate !== '' ? placeholder.includes('desde') ? sinceDate : untilDate : placeholder} />
             </SelectTrigger>
             <SelectContent>
-                <SelectGroup>
+                <SelectGroup className="flex flex-col gap-2">
                     <SelectLabel>{placeholder}</SelectLabel>
                     {
                         price.values?.length &&
                         price.values?.map((date: any) => {
                             return (
-                                <SelectItem key={date.datetime} value={date.datetime}>{date.datetime}</SelectItem>
+                                <input name={placeholder} className="cursor-pointer py-2 px-1 hover:bg-gray-50" type="select" key={date.datetime} defaultValue={date.datetime} onSelect={(e: any) => handleSelect(e)}></input>
                             )
                         })
                     }

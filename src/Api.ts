@@ -16,8 +16,8 @@ const apiKey = process.env.REACT_APP_API_KEY;
 const api = {
   list: async (): Promise<Share[]> => {
     const data = await fetch(
-      "https://api.twelvedata.com/stocks?source=docs&exchange=NYSE",
-      { next: { tags: ["accions"] } }
+      "https://api.twelvedata.com/stocks?source=docs&exchange=NYSE"
+      // { next: { tags: ["accions"] } }
     )
       .then((res) => res.json())
       .then((newData) => newData);
@@ -48,8 +48,8 @@ const api = {
   },
   price: async (symbol: Share["symbol"]): Promise<Share> => {
     const data = await fetch(
-      `https://api.twelvedata.com/time_series?symbol=${symbol}&interval=5min&start_date=2021-04-16%2009:48:00&end_date=2021-04-16%2019:48:00&apikey=${apiKey}`,
-      { next: { tags: ["accions"] } }
+      `https://api.twelvedata.com/time_series?symbol=${symbol}&interval=5min&start_date=2021-04-16%2009:48:00&end_date=2021-04-16%2019:48:00&apikey=${apiKey}`
+      // { next: { tags: ["accions"] } }
     )
       .then((res) => res.json())
       .then((newData) => newData);

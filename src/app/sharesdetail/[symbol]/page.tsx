@@ -7,7 +7,7 @@ import api from '../../../Api'
 import DetailsLogic from '@/app/components/DetailsLogic'
 import { SkeletonCard } from '@/app/components/loading/Loading'
 
-const page = async ({ params }: { params: { symbol: string } }) => {
+const page = async ({ params }: { params: { symbol: string, name: string } }) => {
 
     const data = await api.fetch(params.symbol)
 
