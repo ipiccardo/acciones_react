@@ -13,28 +13,32 @@ const DetailsLogic = ({ price }: any) => {
         setIsRealTime(e.target.name === 'Histórico' ? false : true);
     };
 
-    return (
-        <>
-            <div className='flex gap-10 items-center py-10'>
-                <Checkbox children={'Tiempo Real'} checked={isRealTime} setIsRealTime={setIsRealTime} onChange={handleChange} />
-            </div>
-            <div className='flex gap-10 items-center'>
-                <Checkbox children={'Histórico'} checked={isRealTime === false ? true : false} setIsRealTime={setIsRealTime} onChange={handleChange} />
-                <SelectedInput />
-                <SelectedInput />
-            </div>
-            <div className='flex gap-10 items-center py-10'>
-                <p>Intervalo</p>
-                <SelectInterval />
-            </div>
-            <div className='flex justify-end w-full max-w-2xl pt-10'>
-                <button className='bg-gray-400 w-24 p-2 border-solid border-2 border-black rounded'>Graficar</button>
-            </div>
-            <div>
-                {/* ACA VA EL GRÁFICO */}
-            </div>
-        </>
-    )
+
+    if (price) {
+
+        return (
+            <>
+                <div className='flex gap-10 items-center py-10'>
+                    <Checkbox children={'Tiempo Real'} checked={isRealTime} setIsRealTime={setIsRealTime} onChange={handleChange} />
+                </div>
+                <div className='flex gap-10 items-center'>
+                    <Checkbox children={'Histórico'} checked={isRealTime === false ? true : false} setIsRealTime={setIsRealTime} onChange={handleChange} />
+                    <SelectedInput price={price} />
+                    <SelectedInput price={price} />
+                </div>
+                <div className='flex gap-10 items-center py-10'>
+                    <p>Intervalo</p>
+                    <SelectInterval />
+                </div>
+                <div className='flex justify-end w-full max-w-2xl pt-10'>
+                    <button className='bg-gray-400 w-24 p-2 border-solid border-2 border-black rounded'>Graficar</button>
+                </div>
+                <div>
+                    {/* ACA VA EL GRÁFICO */}
+                </div>
+            </>
+        )
+    }
 }
 
 export default DetailsLogic

@@ -10,7 +10,8 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 
-export function SelectedInput() {
+export function SelectedInput({ price }: { price: { values: Array<any> } }) {
+
     return (
         <Select>
             <SelectTrigger className="w-[180px]">
@@ -19,11 +20,14 @@ export function SelectedInput() {
             <SelectContent>
                 <SelectGroup>
                     <SelectLabel>Fruits</SelectLabel>
-                    <SelectItem value="apple">Apple</SelectItem>
-                    <SelectItem value="banana">Banana</SelectItem>
-                    <SelectItem value="blueberry">Blueberry</SelectItem>
-                    <SelectItem value="grapes">Grapes</SelectItem>
-                    <SelectItem value="pineapple">Pineapple</SelectItem>
+                    {
+                        price.values?.length &&
+                        price.values?.map((date: any, index: number) => {
+                            return (
+                                <SelectItem key={date.datetime} value={date.datetime}>{date.datetime}</SelectItem>
+                            )
+                        })
+                    }
                 </SelectGroup>
             </SelectContent>
         </Select>
