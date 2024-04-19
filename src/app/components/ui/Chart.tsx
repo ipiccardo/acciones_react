@@ -3,11 +3,10 @@ import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
 import { useState, useEffect } from 'react'
 
-const Graph = ({ price, sinceDate, untilDate }: any) => {
+const Chart = ({ price, sinceDate, untilDate, isRealTime }: any) => {
 
 
     const [chartValues, setChartValues] = useState([])
-    const [newChartValues, setNewChartValues] = useState([])
 
     const newValues = price.values.map((valor: any) => {
         const updatedDate = valor.datetime >= sinceDate && valor.datetime <= untilDate ? valor.datetime : 'undefined'
@@ -22,28 +21,28 @@ const Graph = ({ price, sinceDate, untilDate }: any) => {
     const sortedNewValues = newValues.reverse()
 
     useEffect(() => {
-        setChartValues(sortedNewValues)
-    }, [])
+        if (isRealTime) {
+            setChartValues(sortedNewValues)
+        }
+    }, [isRealTime])
 
     useEffect(() => {
-        const updatedValues = price.values.map((valor: any) => {
-            const updatedDate = valor.datetime >= sinceDate && valor.datetime <= untilDate ? valor.datetime : ''
-            const newArray = {
-                price: valor.open,
-                date: updatedDate,
-                time: valor.datetime.substring(11, valor.datetime.length)
-            }
-            return newArray
-        }).filter((data: any) => data.date)
+        if (!isRealTime) {
+            const updatedValues = price.values.map((valor: any) => {
+                const updatedDate = valor.datetime >= sinceDate && valor.datetime <= untilDate ? valor.datetime : ''
+                const newArray = {
+                    price: valor.open,
+                    date: updatedDate,
+                    time: valor.datetime.substring(11, valor.datetime.length)
+                }
+                return newArray
+            }).filter((data: any) => data.date)
 
-        const sortedUpdatedValues = updatedValues.reverse()
+            const sortedUpdatedValues = updatedValues.reverse()
 
-        setNewChartValues(sortedUpdatedValues)
-    }, [sinceDate, untilDate])
-
-
-    console.log(newChartValues, 'nuevos')
-    console.log(chartValues, 'originales')
+            setChartValues(sortedUpdatedValues)
+        }
+    }, [sinceDate, untilDate, isRealTime])
 
     const [hoverData, setHoverData] = useState(null);
     const [chartOptions, setChartOptions] = useState<any>({
@@ -75,13 +74,13 @@ const Graph = ({ price, sinceDate, untilDate }: any) => {
     const updateSeries = () => {
         setChartOptions({
             xAxis: {
-                categories: newChartValues.map((time: any) => time.time),
+                categories: chartValues.map((time: any) => time.time),
             },
             yAxis: {
-                categories: newChartValues.map((price: any) => price.price),
+                categories: chartValues.map((price: any) => price.price),
             },
             series: [
-                { data: newChartValues.length > 10 ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] : Array.from({ length: newChartValues.length }, (_, index) => index) }
+                { data: chartValues.length > 10 ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] : Array.from({ length: chartValues.length }, (_, index) => index) }
             ]
         });
     }
@@ -98,4 +97,4 @@ const Graph = ({ price, sinceDate, untilDate }: any) => {
     )
 }
 
-export default Graph
+export default Chart

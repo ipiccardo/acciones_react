@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Checkbox from './Checkbox';
 import { SelectedInput } from './SelectInput';
 import { SelectInterval } from './SelectInterval';
-import Graph from './Graph';
+import Graph from './Chart';
 
 const DetailShares = ({ price }: any) => {
     const [isRealTime, setIsRealTime] = useState(true)
@@ -24,6 +24,13 @@ const DetailShares = ({ price }: any) => {
             setUntilDate(e.target.value)
         }
     }
+
+    useEffect(() => {
+        if (isRealTime) {
+            setSinceDate('')
+            setUntilDate('')
+        }
+    }, [isRealTime])
 
 
     if (price) {
@@ -45,7 +52,7 @@ const DetailShares = ({ price }: any) => {
                     <button className='bg-gray-400 w-24 p-2 border-solid border-2 border-black rounded'>Graficar</button>
                 </div>
                 <div>
-                    <Graph price={price} sinceDate={sinceDate} untilDate={untilDate} />
+                    <Graph price={price} sinceDate={sinceDate} untilDate={untilDate} isRealTime={isRealTime} />
                     {/* ACA VA EL GRÁFICO */}
                 </div>
             </>
