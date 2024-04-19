@@ -10,8 +10,8 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 
-export function SelectInterval({ setInterval, interval }: any) {
 
+export function SelectInterval({ setInterval, interval }: any) {
     return (
         <Select>
             <SelectTrigger className="w-[180px]">

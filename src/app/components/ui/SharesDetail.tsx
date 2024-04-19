@@ -5,8 +5,13 @@ import Checkbox from './Checkbox';
 import { SelectedInput } from './SelectInput';
 import { SelectInterval } from './SelectInterval';
 import Graph from './Chart';
+import { useParams } from 'next/navigation';
+
 
 const SharesDetail = ({ price }: any) => {
+
+    const params = useParams()
+
     const [isRealTime, setIsRealTime] = useState(true)
 
     const [sinceDate, setSinceDate] = useState('')
@@ -33,6 +38,15 @@ const SharesDetail = ({ price }: any) => {
         }
     }, [isRealTime])
 
+
+    useEffect(() => {
+
+        if (interval !== 'Select a interval') {
+            fetch(`/api/intervals/?symbol=${params.symbol}&interval=${interval}`).then((resp) => resp.json()).then((data) => {
+                console.log(data.data)
+            })
+        }
+    }, [interval])
 
     if (price) {
         return (
