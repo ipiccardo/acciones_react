@@ -1,9 +1,8 @@
 import React from 'react'
-import { SkeletonCard } from './components/loading/Loading'
 
 const loading = () => {
     return (
-        <SkeletonCard />
+        <h1>LOADING....</h1>
     )
 }
 
