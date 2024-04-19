@@ -16,8 +16,9 @@ const apiKey = process.env.REACT_APP_API_KEY;
 const api = {
   list: async (): Promise<Share[]> => {
     const data = await fetch(
-      "https://api.twelvedata.com/stocks?source=docs&exchange=NYSE"
+      "https://api.twelvedata.com/stocks?source=docs&exchange=NYSE",
       // { next: { tags: ["accions"] } }
+      { cache: "force-cache" }
     )
       .then((res) => res.json())
       .then((newData) => newData);

@@ -6,12 +6,13 @@ import { SelectedInput } from './SelectInput';
 import { SelectInterval } from './SelectInterval';
 import Graph from './Chart';
 
-const DetailShares = ({ price }: any) => {
+const SharesDetail = ({ price }: any) => {
     const [isRealTime, setIsRealTime] = useState(true)
 
     const [sinceDate, setSinceDate] = useState('')
     const [untilDate, setUntilDate] = useState('')
 
+    const [interval, setInterval] = useState('Select a interval')
 
     const handleChange = (e: any) => {
         setIsRealTime(e.target.name === 'Histórico' ? false : true);
@@ -46,18 +47,17 @@ const DetailShares = ({ price }: any) => {
                 </div>
                 <div className='flex gap-10 items-center py-10'>
                     <p>Intervalo</p>
-                    <SelectInterval />
+                    <SelectInterval setInterval={setInterval} interval={interval} />
                 </div>
-                <div className='flex justify-end w-full max-w-2xl pt-10'>
+                <div className='flex justify-end w-full max-w-2xl pt-10 pb-10'>
                     <button className='bg-gray-400 w-24 p-2 border-solid border-2 border-black rounded'>Graficar</button>
                 </div>
                 <div>
                     <Graph price={price} sinceDate={sinceDate} untilDate={untilDate} isRealTime={isRealTime} />
-                    {/* ACA VA EL GRÁFICO */}
                 </div>
             </>
         )
     }
 }
 
-export default DetailShares
+export default SharesDetail

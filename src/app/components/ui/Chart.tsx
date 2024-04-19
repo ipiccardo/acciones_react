@@ -5,14 +5,10 @@ import { useState, useEffect } from 'react'
 
 const Chart = ({ price, sinceDate, untilDate, isRealTime }: any) => {
 
-
-    const [chartValues, setChartValues] = useState([])
-
     const newValues = price.values.map((valor: any) => {
-        const updatedDate = valor.datetime >= sinceDate && valor.datetime <= untilDate ? valor.datetime : 'undefined'
         const arrayDeValores = {
             price: valor.open,
-            date: updatedDate ? updatedDate : valor.datetime,
+            date: valor.datetime,
             time: valor.datetime.substring(11, valor.datetime.length)
         }
         return arrayDeValores
@@ -20,11 +16,7 @@ const Chart = ({ price, sinceDate, untilDate, isRealTime }: any) => {
 
     const sortedNewValues = newValues.reverse()
 
-    useEffect(() => {
-        if (isRealTime) {
-            setChartValues(sortedNewValues)
-        }
-    }, [isRealTime])
+    const [chartValues, setChartValues] = useState(sortedNewValues)
 
     useEffect(() => {
         if (!isRealTime) {
@@ -41,6 +33,8 @@ const Chart = ({ price, sinceDate, untilDate, isRealTime }: any) => {
             const sortedUpdatedValues = updatedValues.reverse()
 
             setChartValues(sortedUpdatedValues)
+        } else {
+            setChartValues(sortedNewValues)
         }
     }, [sinceDate, untilDate, isRealTime])
 

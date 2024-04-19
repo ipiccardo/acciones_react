@@ -1,7 +1,7 @@
 'use server'
 import React from 'react'
 import api from '@/Api'
-import DetailShares from './ui/DetailShares'
+import DetailShares from './ui/SharesDetail'
 
 async function DetailsLogic({ data }: { data: string }) {
 
