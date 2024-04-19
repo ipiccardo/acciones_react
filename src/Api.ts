@@ -6,6 +6,7 @@ export interface Share {
   mic_code: string;
   country: string;
   type: string;
+  values: [];
 }
 
 const shares: Share[] = [];

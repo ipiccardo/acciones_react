@@ -6,16 +6,14 @@ import { SelectInterval } from '../components/ui/SelectInterval'
 import { Input } from '@/components/ui/input'
 import { SelectedInput } from '../components/ui/SelectInput'
 
-const DetailsLogic = ({ price }: any) => {
+const DetailsLogic = ({ price }: { price: { values: Array<any> } }) => {
 
     const [isRealTime, setIsRealTime] = useState(true)
     const handleChange = (e: any) => {
         setIsRealTime(e.target.name === 'Histórico' ? false : true);
     };
 
-
     if (price) {
-
         return (
             <>
                 <div className='flex gap-10 items-center py-10'>
@@ -23,8 +21,8 @@ const DetailsLogic = ({ price }: any) => {
                 </div>
                 <div className='flex gap-10 items-center'>
                     <Checkbox children={'Histórico'} checked={isRealTime === false ? true : false} setIsRealTime={setIsRealTime} onChange={handleChange} />
-                    <SelectedInput price={price} />
-                    <SelectedInput price={price} />
+                    <SelectedInput price={price} placeholder='Fecha hora desde' disabled={isRealTime} />
+                    <SelectedInput price={price} placeholder='Fecha hora hasta' disabled={isRealTime} />
                 </div>
                 <div className='flex gap-10 items-center py-10'>
                     <p>Intervalo</p>

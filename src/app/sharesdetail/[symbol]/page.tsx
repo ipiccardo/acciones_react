@@ -5,6 +5,7 @@ import { SelectInterval } from '../../components/ui/SelectInterval'
 import Link from 'next/link'
 import api from '../../../Api'
 import DetailsLogic from '@/app/components/DetailsLogic'
+import { SkeletonCard } from '@/app/components/loading/Loading'
 
 const page = async ({ params }: { params: { symbol: string } }) => {
 
