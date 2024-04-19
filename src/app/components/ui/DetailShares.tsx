@@ -45,7 +45,7 @@ const DetailShares = ({ price }: any) => {
                     <button className='bg-gray-400 w-24 p-2 border-solid border-2 border-black rounded'>Graficar</button>
                 </div>
                 <div>
-                    <Graph price={price} />
+                    <Graph price={price} sinceDate={sinceDate} untilDate={untilDate} />
                     {/* ACA VA EL GRÁFICO */}
                 </div>
             </>
