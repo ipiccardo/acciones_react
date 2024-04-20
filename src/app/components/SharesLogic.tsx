@@ -29,6 +29,8 @@ const SharesLogic = ({ price }: any): React.JSX.Element => {
 
     const [newCall, setNewCall] = useState(false)
 
+    const [error, setError] = useState(false)
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setIsRealTime(e.target.name === 'Histórico' ? false : true);
     };
@@ -36,8 +38,12 @@ const SharesLogic = ({ price }: any): React.JSX.Element => {
     const handleSelect = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.name.includes('desde')) {
             setSinceDate(e.target.value)
-        } else {
+            setError(false)
+        } else if (e.target.value > sinceDate) {
             setUntilDate(e.target.value)
+            setError(false)
+        } else {
+            setError(true)
         }
     }
 
@@ -67,9 +73,9 @@ const SharesLogic = ({ price }: any): React.JSX.Element => {
     return (
         <>
             <RealTimeCheckBox isRealTime={isRealTime} setIsRealTime={setIsRealTime} handleChange={handleChange} />
-            <HisotryCheckboxSelector isRealTime={isRealTime} setIsRealTime={setIsRealTime} handleChange={handleChange} price={price} handleSelect={handleSelect} sinceDate={sinceDate} untilDate={untilDate} />
+            <HisotryCheckboxSelector isRealTime={isRealTime} setIsRealTime={setIsRealTime} handleChange={handleChange} price={price} handleSelect={handleSelect} sinceDate={sinceDate} untilDate={untilDate} error={error} />
             <IntervalSelector interval={interval} setInterval={setInterval} />
-            <ChartLogic price={newPrice} sinceDate={sinceDate} untilDate={untilDate} isRealTime={isRealTime} interval={interval} setNewCall={setNewCall} newCall={newCall} />
+            <ChartLogic price={newPrice} sinceDate={sinceDate} untilDate={untilDate} isRealTime={isRealTime} interval={interval} setNewCall={setNewCall} newCall={newCall} error={error} />
         </>
     )
 

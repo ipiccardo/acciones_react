@@ -64,4 +64,5 @@ export interface ChartType {
   interval: string;
   setNewCall: any;
   newCall: boolean;
+  error: boolean;
 }

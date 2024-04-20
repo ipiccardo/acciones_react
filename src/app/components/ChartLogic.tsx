@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Chart from './ui/Chart';
 import { ChartType } from '../../../types';
 
-const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewCall, newCall }: ChartType) => {
+const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewCall, newCall, error }: ChartType) => {
 
     const newValues = price.values?.map((valor: any) => {
         const arrayDeValores = {
@@ -97,7 +97,7 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
     }
 
     return (
-        <Chart chartOptions={chartOptions} hoverData={hoverData} updateSeries={updateSeries} />
+        <Chart chartOptions={chartOptions} hoverData={hoverData} updateSeries={updateSeries} error={error} />
     )
 }
 
