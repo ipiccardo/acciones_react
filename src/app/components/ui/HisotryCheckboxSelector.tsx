@@ -17,8 +17,10 @@ const HisotryCheckboxSelector = ({ isRealTime, setIsRealTime, handleChange, pric
     return (
         <div className='flex gap-10 items-center'>
             <Checkbox children={'Histórico'} checked={isRealTime === false ? true : false} setIsRealTime={setIsRealTime} onChange={handleChange} />
-            <SelectedInput price={price} placeholder='Fecha hora desde' disabled={isRealTime} handleSelect={handleSelect} sinceDate={sinceDate} />
-            <SelectedInput price={price} placeholder='Fecha hora hasta' disabled={isRealTime} handleSelect={handleSelect} untilDate={untilDate} />
+            <div className='flex flex-col gap-4 md:flex md:flex-row'>
+                <SelectedInput price={price} placeholder='Fecha hora desde' disabled={isRealTime} handleSelect={handleSelect} sinceDate={sinceDate} />
+                <SelectedInput price={price} placeholder='Fecha hora hasta' disabled={isRealTime} handleSelect={handleSelect} untilDate={untilDate} />
+            </div>
         </div>
     )
 }

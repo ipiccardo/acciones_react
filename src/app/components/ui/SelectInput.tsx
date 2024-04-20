@@ -15,10 +15,10 @@ export function SelectedInput({ price, placeholder, disabled, handleSelect, sinc
 
     return (
         <Select disabled={disabled}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[280px]">
                 <SelectValue placeholder={sinceDate !== '' && untilDate !== '' ? placeholder.includes('desde') ? sinceDate : untilDate : placeholder} />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="max-h-52">
                 <SelectGroup className="flex flex-col gap-2">
                     <SelectLabel>{placeholder}</SelectLabel>
                     {
