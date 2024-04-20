@@ -107,14 +107,16 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
                 },
             ],
         });
-        Swal.fire({
-            title: 'Intervalo actualizado',
-            text: 'Gráfico actializado',
-            icon: 'success',
-            position: 'top-end',
-            timer: 1500,
-            showConfirmButton: false
-        });
+        if (isRealTime && isClicked) {
+            Swal.fire({
+                title: 'Intervalo actualizado',
+                text: 'Gráfico actializado',
+                icon: 'success',
+                position: 'top-end',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        }
     }
 
     return (
