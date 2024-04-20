@@ -1,5 +1,3 @@
-
-
 import api from '../Api'
 import HomeLayout from './components/HomeLayoutLogic'
 

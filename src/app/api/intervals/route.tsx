@@ -11,7 +11,6 @@ export async function GET(request: NextRequest) {
     const endDate = searchParams.get("end_date")
 
     const symbol = params
-    console.log(date, 'date')
 
     // const res = await fetch(`https://api.twelvedata.com/time_series?symbol=${symbol}&interval=${interval}&start_date=2021-04-16%2009:48:00'&end_date=2021-04-16%2019:48:00&apikey=${apiKey}`,
 
