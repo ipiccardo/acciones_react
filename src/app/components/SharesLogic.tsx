@@ -3,7 +3,10 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { formatDate } from '@/utils/utils';
-import SharesRender from './ui/SharesRender';
+import IntervalSelector from './ui/IntervalSelector';
+import ChartLogic from './ChartLogic';
+import RealTimeCheckBox from './ui/RealTimeCheckBox';
+import HisotryCheckboxSelector from './ui/HisotryCheckboxSelector';
 
 
 const SharesLogic = ({ price }: any) => {
@@ -56,15 +59,10 @@ const SharesLogic = ({ price }: any) => {
 
     return (
         <>
-            <SharesRender isRealTime={isRealTime} setIsRealTime={setIsRealTime} handleChange={handleChange}
-                price={price}
-                handleSelect={handleSelect}
-                sinceDate={sinceDate}
-                untilDate={untilDate}
-                interval={interval}
-                newPrice={newPrice}
-                setNewCall={setNewCall}
-                newCall={newCall} />
+            <RealTimeCheckBox isRealTime={isRealTime} setIsRealTime={setIsRealTime} handleChange={handleChange} />
+            <HisotryCheckboxSelector isRealTime={isRealTime} setIsRealTime={setIsRealTime} handleChange={handleChange} price={price} handleSelect={handleSelect} sinceDate={sinceDate} untilDate={untilDate} />
+            <IntervalSelector interval={interval} setInterval={setInterval} />
+            <ChartLogic price={newPrice} sinceDate={sinceDate} untilDate={untilDate} isRealTime={isRealTime} interval={interval} setNewCall={setNewCall} newCall={newCall} />
         </>
     )
 
