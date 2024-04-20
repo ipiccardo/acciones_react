@@ -3,7 +3,8 @@ import Header from '../../components/ui/Header'
 import api from '../../../Api'
 import DetailsCall from '@/app/components/DetailsCall'
 import BackToHome from '@/app/components/ui/BackToHome'
-import { ChartLoader } from '@/app/components/ui/loading/Loading'
+import ChartLoader from '@/app/components/ui/loading/Loading'
+// import { Skeleton } from '@/components/ui/skeleton'
 
 const page = async ({ params, searchParams }: { params: { symbol: string }, searchParams: { name: string } }) => {
 
