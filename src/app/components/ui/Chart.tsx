@@ -7,17 +7,28 @@ interface Chart {
     chartOptions: string,
     hoverData: null,
     updateSeries: any,
-    error: boolean
+    error: boolean,
+    isClicked: boolean,
+    setIsClicked: any
 }
 
 
-const Chart = ({ chartOptions, hoverData, updateSeries, error }: Chart) => {
+const Chart = ({ chartOptions, hoverData, updateSeries, error, isClicked, setIsClicked }: Chart) => {
     return (
         <>
             <div className='flex justify-end w-full max-w-2xl pt-10 pb-10'>
-                <button disabled={error} onClick={updateSeries} className="bg-gray-400 hover:bg-gray-500 text-black font-bold py-2 px-4 border border-gray-700 rounded-md transition duration-300 ease-in-out">
-                    Graficar
-                </button>
+                {
+                    !isClicked ? (
+                        <button disabled={error} onClick={updateSeries} className={`bg-gray-400 hover:bg-gray-500 text-black font-bold py-2 px-4 border border-gray-700 rounded-md transition duration-300 ease-in-out`}>
+                            Graficar
+                        </button>
+                    ) :
+                        (
+                            <button onClick={() => setIsClicked(false)} className='min-w-[97px] bg-red-300 hover:bg-red-400 text-white font-bold py-2 px-4 border border-gray-700 rounded-md transition duration-300 ease-in-out'>
+                                Stop
+                            </button>
+                        )
+                }
             </div>
             <div>
                 <HighchartsReact

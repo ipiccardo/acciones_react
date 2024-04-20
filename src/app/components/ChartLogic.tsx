@@ -18,9 +18,11 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
 
     const [chartValues, setChartValues] = useState(sortedNewValues)
 
+    const [isClicked, setIsClicked] = useState(false)
+
     useEffect(() => {
         if (!isRealTime) {
-            const updatedValues = price.values?.map((valor: any) => {
+            const updatedValues: any = price.values?.map((valor: any) => {
                 const updatedDate = valor.datetime >= sinceDate && valor.datetime <= untilDate ? valor.datetime : ''
                 const newArray = {
                     price: valor.open,
@@ -33,9 +35,10 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
             const sortedUpdatedValues = updatedValues?.reverse()
 
             setChartValues(sortedUpdatedValues)
+            setIsClicked(false)
         } else {
             setChartValues(sortedNewValues)
-            if (isRealTime && interval !== 'Select a interval') {
+            if (isRealTime && interval !== 'Select a interval' && isClicked) {
                 const intervalId = setInterval(updateSeries, parseInt(interval === '15min' ? '15' : interval.charAt(0)) * 60 * 1000)
                 return () => clearInterval(intervalId);
             }
@@ -55,6 +58,9 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
         },
         title: {
             text: `${price.meta?.symbol}`
+        },
+        subtitle: {
+            text: `${chartValues === undefined ? 'Aún no hay movimientos' : price.meta?.exchange}`
         },
         series: [
             {
@@ -76,11 +82,19 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
     }
     );
 
+
+
     const updateSeries = () => {
+        if (isRealTime && !isClicked) {
+            setIsClicked(true)
+        }
         setNewCall(!newCall)
         setChartOptions({
+            subTitle: {
+                text: `${chartValues === undefined && 'Aún no hay movimientos'}`
+            },
             xAxis: {
-                categories: chartValues?.map((time: any) => time.time.slice(0, 5)),
+                categories: chartValues === undefined ? [] : chartValues?.map((time: any) => time.time.slice(0, 5)),
             },
             yAxis: {
                 title: {
@@ -90,14 +104,14 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
             series: [
                 {
                     name: 'intervalo',
-                    data: chartValues?.map((price: any) => parseFloat(price.price))
+                    data: chartValues === undefined ? [] : chartValues?.map((price: any) => parseFloat(price.price))
                 },
             ],
         });
     }
 
     return (
-        <Chart chartOptions={chartOptions} hoverData={hoverData} updateSeries={updateSeries} error={error} />
+        <Chart chartOptions={chartOptions} hoverData={hoverData} updateSeries={updateSeries} error={error} isClicked={isClicked} setIsClicked={setIsClicked} />
     )
 }
 
