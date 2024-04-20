@@ -54,6 +54,7 @@ export interface Price {
   status: string;
   values: ShareValues[];
   price: any;
+  message: string;
 }
 
 export interface ChartType {

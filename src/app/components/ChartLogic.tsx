@@ -83,6 +83,7 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
     );
 
 
+    console.log(chartValues, '1')
 
     const updateSeries = () => {
         if (isRealTime && !isClicked) {
@@ -90,11 +91,8 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
         }
         setNewCall(!newCall)
         setChartOptions({
-            subTitle: {
-                text: `${chartValues === undefined && 'Aún no hay movimientos'}`
-            },
             xAxis: {
-                categories: chartValues === undefined ? [] : chartValues?.map((time: any) => time.time.slice(0, 5)),
+                categories: chartValues === undefined ? [price.message] : chartValues?.map((time: any) => time.time.slice(0, 5)),
             },
             yAxis: {
                 title: {
@@ -104,7 +102,7 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
             series: [
                 {
                     name: 'intervalo',
-                    data: chartValues === undefined ? [] : chartValues?.map((price: any) => parseFloat(price.price))
+                    data: chartValues === undefined ? [price.status] : chartValues?.map((price: any) => parseFloat(price.price))
                 },
             ],
         });

@@ -58,6 +58,7 @@ const SharesLogic = ({ price }: any): React.JSX.Element => {
 
     useEffect(() => {
         if (interval !== 'Select a interval' && isRealTime) {
+
             fetch(`/api/intervals/?symbol=${params.symbol}&interval=${interval}&start_date=${formatedDate}`).then((resp) => resp.json()).then((data) => {
                 setNewPrice(data.data)
             })
@@ -66,9 +67,7 @@ const SharesLogic = ({ price }: any): React.JSX.Element => {
                 setNewPrice(data.data)
             })
         }
-
-
-    }, [interval, newCall])
+    }, [newCall, sinceDate, untilDate, interval, isRealTime])
 
     return (
         <>
