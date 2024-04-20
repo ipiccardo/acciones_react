@@ -5,7 +5,6 @@ import { ActionsTable } from './ui/Table'
 import { PaginationTable } from './ui/Pagination'
 import { useState, useEffect } from 'react'
 import { generatePaginationItems, handleGoToPage } from '@/utils/utils'
-import { SkeletonCard } from './loading/Loading'
 import { SkeletonInTable } from './loading/skeletonTable'
 import { FirstData } from '../../../types'
 

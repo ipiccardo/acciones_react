@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter, useSearchParams, redirect } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect, ChangeEvent } from 'react'
 import SearchBox from "./ui/SearchBox";
 

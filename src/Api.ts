@@ -4,14 +4,20 @@ const shares: Share[] = [];
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
+const defaultUrl = "https://api.twelvedata.com/stocks?source=docs";
+const startfilteredUrl =
+  "https://api.twelvedata.com/stocks?source=docs&exchange=NYSE";
+
+const url = startfilteredUrl;
+
 const api = {
   list: async (): Promise<Share[]> => {
-    const data = await fetch(
-      "https://api.twelvedata.com/stocks?source=docs&exchange=NYSE"
-    )
+    const data = await fetch(url)
       .then((res) => res.json())
       .then((newData) => newData);
-    shares.push(...data.data);
+    if (!(url.length > 43)) {
+      shares.push(...data.data);
+    }
     return data;
   },
   fetch: async (

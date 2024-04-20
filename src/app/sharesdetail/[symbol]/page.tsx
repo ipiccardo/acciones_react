@@ -1,8 +1,5 @@
 import React, { Suspense } from 'react'
 import Header from '../../components/ui/Header'
-import Checkbox from '../../components/ui/Checkbox'
-import { SelectInterval } from '../../components/ui/SelectInterval'
-import Link from 'next/link'
 import api from '../../../Api'
 import DetailsCall from '@/app/components/DetailsCall'
 import BackToHome from '@/app/components/ui/BackToHome'
