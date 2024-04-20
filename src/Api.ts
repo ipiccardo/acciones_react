@@ -1,13 +1,4 @@
-export interface Share {
-  symbol: string;
-  name?: string;
-  currency: string;
-  exchange: string;
-  mic_code: string;
-  country: string;
-  type: string;
-  values: [];
-}
+import { Share, Price } from "../types";
 
 const shares: Share[] = [];
 
@@ -54,7 +45,7 @@ const api = {
     );
     return results;
   },
-  price: async (symbol: Share["symbol"]): Promise<Share> => {
+  price: async (symbol: Share["symbol"]): Promise<Price> => {
     const data = await fetch(
       `https://api.twelvedata.com/time_series?symbol=${symbol}&interval=5min&apikey=${apiKey}`
     )

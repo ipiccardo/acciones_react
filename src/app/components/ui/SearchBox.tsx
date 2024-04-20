@@ -1,6 +1,13 @@
 import React from 'react'
 
-const SearchBox = ({ label, onChange, value, placeholder }: any) => {
+interface SearchBox {
+    label: string,
+    onChange: any,
+    value: string,
+    placeholder: string
+}
+
+const SearchBox = ({ label, onChange, value, placeholder }: SearchBox) => {
     return (
 
         <div className="inline-flex gap-2 mb-4">

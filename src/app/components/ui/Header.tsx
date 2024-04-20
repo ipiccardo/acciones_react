@@ -1,7 +1,7 @@
 import React from 'react'
+import { HeaderType } from '../../../../types'
 
-const Header = ({ data }: any) => {
-
+const Header = ({ data }: HeaderType | any) => {
 
     return (
         <div className='flex w-full justify-between border-b-2 border-solid border-neutral-700 px-2 py-2'>

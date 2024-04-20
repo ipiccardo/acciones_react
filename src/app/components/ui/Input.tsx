@@ -1,6 +1,16 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ButtonOutline } from "./Button"
+
+
+interface Input {
+    type: string,
+    placeholder: string,
+    value: string,
+    onChange: any,
+    props: any,
+    onSubmit: any
+}
+
 
 export function InputWithButton({ type, placeholder, value, onChange, props, onSubmit }: any) {
     return (

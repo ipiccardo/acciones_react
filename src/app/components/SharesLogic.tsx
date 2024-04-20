@@ -1,15 +1,16 @@
 'use client'
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 import { useParams } from 'next/navigation';
 import { formatDate } from '@/utils/utils';
 import IntervalSelector from './ui/IntervalSelector';
 import ChartLogic from './ChartLogic';
 import RealTimeCheckBox from './ui/RealTimeCheckBox';
 import HisotryCheckboxSelector from './ui/HisotryCheckboxSelector';
+import { Price } from '../../../types'
 
 
-const SharesLogic = ({ price }: any) => {
+const SharesLogic = ({ price }: any): React.JSX.Element => {
 
     const params = useParams()
 
@@ -20,7 +21,7 @@ const SharesLogic = ({ price }: any) => {
 
     const [interval, setInterval] = useState('Select a interval')
 
-    const [newPrice, setNewPrice] = useState(price)
+    const [newPrice, setNewPrice] = useState<Price>(price)
 
     const date = new Date()
 
@@ -28,11 +29,11 @@ const SharesLogic = ({ price }: any) => {
 
     const [newCall, setNewCall] = useState(false)
 
-    const handleChange = (e: any) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setIsRealTime(e.target.name === 'Histórico' ? false : true);
     };
 
-    const handleSelect = (e: any) => {
+    const handleSelect = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.name.includes('desde')) {
             setSinceDate(e.target.value)
         } else {

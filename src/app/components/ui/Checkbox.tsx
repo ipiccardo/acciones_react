@@ -1,6 +1,12 @@
 "use client"
 import styles from './ui.module.css'
 
+interface Checkbox {
+    children: string,
+    checked: boolean,
+    onChange: any
+}
+
 
 const Checkbox = ({ children, checked, onChange }: any) => {
 

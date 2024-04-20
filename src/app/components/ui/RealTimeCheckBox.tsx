@@ -1,7 +1,13 @@
 import React from 'react'
 import Checkbox from './Checkbox'
 
-const RealTimeCheckBox = ({ isRealTime, setIsRealTime, handleChange }: any) => {
+interface RealTimeCheckBox {
+    isRealTime: boolean,
+    setIsRealTime: any,
+    handleChange: any
+}
+
+const RealTimeCheckBox = ({ isRealTime, setIsRealTime, handleChange }: RealTimeCheckBox) => {
     return (
         <div className='flex gap-10 items-center py-10'>
             <Checkbox children={'Tiempo Real'} checked={isRealTime} setIsRealTime={setIsRealTime} onChange={handleChange} />

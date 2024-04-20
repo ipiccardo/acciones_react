@@ -7,8 +7,9 @@ import { useState, useEffect } from 'react'
 import { generatePaginationItems, handleGoToPage } from '@/utils/utils'
 import { SkeletonCard } from './loading/Loading'
 import { SkeletonInTable } from './loading/skeletonTable'
+import { FirstData } from '../../../types'
 
-const HomeLayout = ({ data }: any) => {
+const HomeLayout = ({ data }: FirstData) => {
 
     const itemsPerPage = data.length > 50 ? 50 : data.length
     const [currentPage, setCurrentPage] = useState<number>(1);

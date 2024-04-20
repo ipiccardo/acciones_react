@@ -1,7 +1,12 @@
 import React from 'react'
 import { SelectInterval } from './SelectInterval'
 
-const IntervalSelector = ({ setInterval, interval }: any) => {
+interface IntervalSelector {
+    setInterval: any,
+    interval: string
+}
+
+const IntervalSelector = ({ setInterval, interval }: IntervalSelector) => {
     return (
         <div className='flex gap-10 items-center py-10'>
             <p>Intervalo</p>

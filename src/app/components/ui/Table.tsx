@@ -8,10 +8,11 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
-import { Share } from '@/Api';
-import Link from 'next/link';
 
-export function ActionsTable({ currentPageData }: any) {
+import Link from 'next/link';
+import { CurrentPageData } from "../../../../types";
+
+export function ActionsTable({ currentPageData }: CurrentPageData[] | any) {
 
     return (
         <Table>
@@ -25,7 +26,7 @@ export function ActionsTable({ currentPageData }: any) {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {currentPageData?.map((share: Share) => (
+                {currentPageData?.map((share: CurrentPageData) => (
                     <TableRow key={share.symbol}>
                         <TableCell className="font-medium"><Link href={`/sharesdetail/${share.symbol}?symbol=${share.symbol}&name=${share.name}`} className='text-blue-600 underline decoration-1'>{share.symbol}</Link></TableCell>
                         <TableCell>{share.name}</TableCell>

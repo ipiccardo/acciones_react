@@ -2,8 +2,14 @@ import React from 'react'
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
 
+interface Chart {
+    chartOptions: string,
+    hoverData: null,
+    updateSeries: any
+}
 
-const Chart = ({ chartOptions, hoverData, updateSeries }: any) => {
+
+const Chart = ({ chartOptions, hoverData, updateSeries }: Chart) => {
     return (
         <>
             <div className='flex justify-end w-full max-w-2xl pt-10 pb-10'>

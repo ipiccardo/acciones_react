@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter, useSearchParams, redirect } from "next/navigation";
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ChangeEvent } from 'react'
 import SearchBox from "./ui/SearchBox";
 
 export default function SearchBar() {
@@ -38,12 +38,12 @@ export default function SearchBar() {
 
 
 
-    const handleInputChange = (event: any) => {
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchBySymbol('')
         setSearchQuery(event.target.value)
     }
 
-    const handleSymbolChange = (event: any) => {
+    const handleSymbolChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchQuery('')
         setSearchBySymbol(event.target.value)
     }
