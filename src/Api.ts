@@ -2,7 +2,7 @@ import { Share, Price } from "../types";
 
 const shares: Share[] = [];
 
-const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = process.env.REACT_APP_API_KEY_B;
 
 const defaultUrl = "https://api.twelvedata.com/stocks?source=docs";
 const startfilteredUrl =

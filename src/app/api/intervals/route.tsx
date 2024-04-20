@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 
-const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = process.env.REACT_APP_API_KEY_B;
 
 export async function GET(request: NextRequest) {
 
