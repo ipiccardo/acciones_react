@@ -83,7 +83,6 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
     );
 
 
-    console.log(chartValues, '1')
 
     const updateSeries = () => {
         if (isRealTime && !isClicked) {
