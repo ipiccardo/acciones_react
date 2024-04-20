@@ -1,11 +1,9 @@
-import React from 'react'
-import HighchartsReact from 'highcharts-react-official';
-import Highcharts from 'highcharts';
-import { useState, useEffect } from 'react'
+import React from 'react';
+import { useState, useEffect } from 'react';
 import Chart from './ui/Chart';
+import { ChartType } from '../../../types';
 
-const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewCall, newCall }: any) => {
-
+const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewCall, newCall }: ChartType) => {
 
     const newValues = price.values?.map((valor: any) => {
         const arrayDeValores = {
