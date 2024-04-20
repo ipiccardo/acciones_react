@@ -13,7 +13,9 @@ const Chart = ({ chartOptions, hoverData, updateSeries }: Chart) => {
     return (
         <>
             <div className='flex justify-end w-full max-w-2xl pt-10 pb-10'>
-                <button className='bg-gray-400 w-24 p-2 border-solid border-2 border-black rounded'>Graficar</button>
+                <button className="bg-gray-400 hover:bg-gray-500 text-black font-bold py-2 px-4 border border-gray-700 rounded-md transition duration-300 ease-in-out">
+                    Graficar
+                </button>
             </div>
             <div>
                 <HighchartsReact
@@ -21,7 +23,6 @@ const Chart = ({ chartOptions, hoverData, updateSeries }: Chart) => {
                     options={chartOptions}
                 />
                 <h3>Hovering over {hoverData}</h3>
-                <button onClick={updateSeries}>Update Series</button>
             </div>
         </>
     )

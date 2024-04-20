@@ -12,7 +12,7 @@ export interface CurrentPageData {
   type: string;
 }
 
-export interface Header {
+export interface HeaderType {
   symbol: string;
   name: string;
   currency: string;
