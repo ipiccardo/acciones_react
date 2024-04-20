@@ -5,7 +5,7 @@ import { ActionsTable } from './ui/Table'
 import { PaginationTable } from './ui/Pagination'
 import { useState, useEffect } from 'react'
 import { generatePaginationItems, handleGoToPage } from '@/utils/utils'
-import { SkeletonInTable } from './loading/skeletonTable'
+import { SkeletonInTable } from './ui/loading/skeletonTable'
 import { FirstData } from '../../../types'
 
 const HomeLayout = ({ data }: FirstData) => {
