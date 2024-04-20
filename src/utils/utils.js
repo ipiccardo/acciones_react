@@ -142,15 +142,17 @@ export const generatePaginationItems = (
   return items;
 };
 
-export const formatDate = (date) => {
-  const year = date.getFullYear();
-  const month = ("0" + (date.getMonth() + 1)).slice(-2);
-  const day = ("0" + date.getDate()).slice(-2);
-  const hours = ("0" + date.getHours()).slice(-2);
-  const minutes = ("0" + date.getMinutes()).slice(-2);
-  const seconds = ("0" + date.getSeconds()).slice(-2);
+export function formatDate(fecha) {
+  fecha.setHours(9, 0, 0, 0);
 
-  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  let dia = ("0" + fecha.getDate()).slice(-2);
+  let mes = ("0" + (fecha.getMonth() + 1)).slice(-2);
+  let año = fecha.getFullYear();
+  let hora = ("0" + fecha.getHours()).slice(-2);
+  let minutos = ("0" + fecha.getMinutes()).slice(-2);
+  let segundos = ("0" + fecha.getSeconds()).slice(-2);
 
-  return formattedDate;
-};
+  let fechaFormateada = `${año}-${mes}-${dia}%20${hora}:${minutos}:${segundos}`;
+
+  return fechaFormateada;
+}

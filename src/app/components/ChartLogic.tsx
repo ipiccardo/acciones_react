@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Chart from './ui/Chart';
 import { ChartType } from '../../../types';
+import Swal from 'sweetalert2';
+
 
 const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewCall, newCall, error }: ChartType) => {
 
@@ -101,9 +103,17 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
             series: [
                 {
                     name: 'intervalo',
-                    data: chartValues === undefined ? [price.status] : chartValues?.map((price: any) => parseFloat(price.price))
+                    data: chartValues === undefined ? [price.message] : chartValues?.map((price: any) => parseFloat(price.price))
                 },
             ],
+        });
+        Swal.fire({
+            title: 'Intervalo actualizado',
+            text: 'Gráfico actializado',
+            icon: 'success',
+            position: 'top-end',
+            timer: 1500,
+            showConfirmButton: false
         });
     }
 
