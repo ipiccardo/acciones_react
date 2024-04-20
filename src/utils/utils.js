@@ -1,13 +1,10 @@
 import {
-  Pagination,
-  PaginationContent,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { InputWithButton } from "@/app/components/ui/Input";
-import ButtonOutline from "../components/ui/button";
 
 export const generatePageNumbers = (currentPage, totalPages) => {
   const pagesToShow = 5;
@@ -143,4 +140,17 @@ export const generatePaginationItems = (
   });
 
   return items;
+};
+
+export const formatDate = (date) => {
+  const year = date.getFullYear();
+  const month = ("0" + (date.getMonth() + 1)).slice(-2);
+  const day = ("0" + date.getDate()).slice(-2);
+  const hours = ("0" + date.getHours()).slice(-2);
+  const minutes = ("0" + date.getMinutes()).slice(-2);
+  const seconds = ("0" + date.getSeconds()).slice(-2);
+
+  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+  return formattedDate;
 };

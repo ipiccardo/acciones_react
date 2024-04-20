@@ -7,9 +7,9 @@ import api from '../../../Api'
 import DetailsLogic from '@/app/components/DetailsLogic'
 import { SkeletonCard } from '@/app/components/loading/Loading'
 
-const page = async ({ params }: { params: { symbol: string, name: string } }) => {
+const page = async ({ params, searchParams }: { params: { symbol: string }, searchParams: { name: string } }) => {
 
-    const data = await api.fetch(params.symbol)
+    const data = await api.fetch(params.symbol, searchParams.name)
 
     return (
         <div className='max-w-6xl flex flex-col w-full content-center justify-center mx-auto my-0 pt-10'>

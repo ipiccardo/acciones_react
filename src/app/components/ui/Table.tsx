@@ -27,7 +27,7 @@ export function ActionsTable({ currentPageData }: any) {
             <TableBody>
                 {currentPageData?.map((share: Share) => (
                     <TableRow key={share.symbol}>
-                        <TableCell className="font-medium"><Link href={`/sharesdetail/${share.symbol}`} className='text-blue-600 underline decoration-1'>{share.symbol}</Link></TableCell>
+                        <TableCell className="font-medium"><Link href={`/sharesdetail/${share.symbol}?symbol=${share.symbol}&name=${share.name}`} className='text-blue-600 underline decoration-1'>{share.symbol}</Link></TableCell>
                         <TableCell>{share.name}</TableCell>
                         <TableCell>{share.currency}</TableCell>
                         <TableCell className="text-right">{share.type}</TableCell>
