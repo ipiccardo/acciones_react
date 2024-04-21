@@ -2,7 +2,7 @@
 
 const BackToHome = () => {
     return (
-        <a href="/" className="flex items-center justify-center text-blue-500 hover:text-blue-700 p-4">
+        <a href="/" className="flex items-center justify-start text-blue-500 hover:text-blue-700 py-4">
             <svg
                 className="w-6 h-6 mr-1"
                 fill="none"
@@ -17,7 +17,7 @@ const BackToHome = () => {
                     d="M15 19l-7-7 7-7"
                 />
             </svg>
-            Back to home
+            Back
         </a>
     );
 };

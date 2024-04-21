@@ -13,10 +13,10 @@ const page = async ({ params, searchParams }: { params: { symbol: string }, sear
     return (
         <div className='max-w-6xl flex flex-col w-full content-center justify-center mx-auto my-0 p-4 md:p-24'>
             <Header data={data} />
+            <BackToHome />
             <Suspense fallback={<ChartLoader />}>
                 <DetailsCall data={data.symbol} />
             </Suspense>
-            <BackToHome />
         </div>
     )
 }

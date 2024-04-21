@@ -107,7 +107,7 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
                 },
             ],
         });
-        if (isRealTime && isClicked) {
+        if (isRealTime) {
             Swal.fire({
                 title: 'Intervalo actualizado',
                 text: 'Gráfico actializado',
@@ -120,7 +120,7 @@ const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewC
     }
 
     return (
-        <Chart chartOptions={chartOptions} hoverData={hoverData} updateSeries={updateSeries} error={error} isClicked={isClicked} setIsClicked={setIsClicked} />
+        <Chart chartOptions={chartOptions} hoverData={hoverData} updateSeries={updateSeries} error={error} isClicked={isClicked} setIsClicked={setIsClicked} message={chartValues === undefined && isClicked ? price?.message : ''} />
     )
 }
 

@@ -9,11 +9,12 @@ interface Chart {
     updateSeries: any,
     error: boolean,
     isClicked: boolean,
-    setIsClicked: any
+    setIsClicked: any,
+    message: string
 }
 
 
-const Chart = ({ chartOptions, hoverData, updateSeries, error, isClicked, setIsClicked }: Chart) => {
+const Chart = ({ chartOptions, hoverData, updateSeries, error, isClicked, setIsClicked, message }: Chart) => {
     return (
         <>
             <div className='flex justify-end w-full max-w-2xl pt-10 pb-10'>
@@ -31,11 +32,13 @@ const Chart = ({ chartOptions, hoverData, updateSeries, error, isClicked, setIsC
                 }
             </div>
             <div>
+                {message && <p className='text-red-300'>Aún no se registran transacciones</p>}
+            </div>
+            <div>
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={chartOptions}
                 />
-                <h3>Hovering over {hoverData}</h3>
             </div>
         </>
     )
