@@ -10,11 +10,12 @@ interface HisotryCheckboxSelector {
     handleSelect: any,
     sinceDate: string,
     untilDate: string,
-    error: boolean
+    error: boolean,
+    errorMessage: string
 }
 
 
-const HisotryCheckboxSelector = ({ isRealTime, setIsRealTime, handleChange, price, handleSelect, sinceDate, untilDate, error }: HisotryCheckboxSelector) => {
+const HisotryCheckboxSelector = ({ isRealTime, setIsRealTime, handleChange, price, handleSelect, sinceDate, untilDate, error, errorMessage }: HisotryCheckboxSelector) => {
     return (
         <div className='flex gap-10 items-center flex-wrap'>
             <Checkbox children={'Histórico'} checked={isRealTime === false ? true : false} setIsRealTime={setIsRealTime} onChange={handleChange} />
@@ -23,7 +24,7 @@ const HisotryCheckboxSelector = ({ isRealTime, setIsRealTime, handleChange, pric
                 <SelectedInput price={price} placeholder='Fecha hora hasta' disabled={isRealTime} handleSelect={handleSelect} untilDate={untilDate} />
             </div>
             {
-                error && <p className='text-rose-500'>Elegi una fecha posterir a la fecha desde</p>
+                error && <p className='text-rose-500'>{errorMessage}</p>
             }
         </div>
     )

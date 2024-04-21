@@ -30,20 +30,32 @@ const SharesLogic = ({ price }: any): React.JSX.Element => {
     const [newCall, setNewCall] = useState(false)
 
     const [error, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setIsRealTime(e.target.name === 'Histórico' ? false : true);
     };
 
     const handleSelect = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log('until date', untilDate)
         if (e.target.name.includes('desde')) {
-            setSinceDate(e.target.value)
-            setError(false)
+            if (untilDate !== '' && e.target.value > untilDate) {
+                setError(true)
+                setErrorMessage('Elegi una fecha anterior a la fecha hasta.')
+                setSinceDate('')
+            } else {
+                setSinceDate(e.target.value)
+                setError(false)
+                setErrorMessage('')
+            }
         } else if (e.target.value > sinceDate) {
             setUntilDate(e.target.value)
             setError(false)
+            setErrorMessage('')
         } else {
             setError(true)
+            setErrorMessage('Elegi una fecha posterir a la fecha desde.')
+            setUntilDate('')
         }
     }
 
@@ -72,7 +84,7 @@ const SharesLogic = ({ price }: any): React.JSX.Element => {
     return (
         <>
             <RealTimeCheckBox isRealTime={isRealTime} setIsRealTime={setIsRealTime} handleChange={handleChange} />
-            <HisotryCheckboxSelector isRealTime={isRealTime} setIsRealTime={setIsRealTime} handleChange={handleChange} price={price} handleSelect={handleSelect} sinceDate={sinceDate} untilDate={untilDate} error={error} />
+            <HisotryCheckboxSelector isRealTime={isRealTime} setIsRealTime={setIsRealTime} handleChange={handleChange} price={price} handleSelect={handleSelect} sinceDate={sinceDate} untilDate={untilDate} error={error} errorMessage={errorMessage} />
             <IntervalSelector interval={interval} setInterval={setInterval} />
             <ChartLogic price={newPrice} sinceDate={sinceDate} untilDate={untilDate} isRealTime={isRealTime} interval={interval} setNewCall={setNewCall} newCall={newCall} error={error} />
         </>
