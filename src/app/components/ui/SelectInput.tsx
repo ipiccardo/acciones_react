@@ -25,7 +25,7 @@ export function SelectedInput({ price, placeholder, disabled, handleSelect, sinc
                             price.values?.map((date: any) => {
                                 return (
 
-                                    <input name={placeholder} className="cursor-pointer py-2 px-1 hover:bg-gray-50" type="select" key={date.datetime} defaultValue={date.datetime} onSelect={(e: any) => handleSelect(e)}></input>
+                                    <input readOnly={true} name={placeholder} className="cursor-pointer py-2 px-1 hover:bg-gray-50" type="select" key={date.datetime} defaultValue={date.datetime} onSelect={(e: any) => handleSelect(e)}></input>
 
                                 )
                             }).reverse()
