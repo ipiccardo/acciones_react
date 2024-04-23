@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 
 const ChartLogic = ({ price, sinceDate, untilDate, isRealTime, interval, setNewCall, newCall, error }: ChartType) => {
 
+
     const newValues = price.values?.map((valor: any) => {
         const arrayDeValores = {
             price: valor.open,

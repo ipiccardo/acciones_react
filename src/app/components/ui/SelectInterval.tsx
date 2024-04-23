@@ -12,7 +12,6 @@ import {
 
 
 export function SelectInterval({ setInterval, interval }: any) {
-    console.log(interval, 'intervalo')
     return (
         <Select>
             <SelectTrigger className="w-[180px]">

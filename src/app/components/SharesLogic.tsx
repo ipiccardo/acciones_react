@@ -37,7 +37,6 @@ const SharesLogic = ({ price }: any): React.JSX.Element => {
     };
 
     const handleSelect = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log('until date', untilDate)
         if (e.target.name.includes('desde')) {
             if (untilDate !== '' && e.target.value > untilDate) {
                 setError(true)
